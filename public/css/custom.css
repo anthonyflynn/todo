@@ -1,0 +1,35 @@
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	padding-top: 50px;
+}
+
+#todo-list {
+	margin-top: 60px;
+	margin-bottom: 30px;
+}
+
+.strike {
+    background-color: #32CD32;
+    text-decoration: line-through;
+    color: white;
+}
+
+.strike .glyphicon {
+	color: white;
+}
+
+.background {
+	background-color: #FF6347;
+	color: white;
+}
+
+.background .glyphicon {
+	color: white;
+}
+
+
+

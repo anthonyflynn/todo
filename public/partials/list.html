@@ -1,0 +1,121 @@
+<section class="listview">
+
+    <script>
+    $(function() {
+        $( "#datepicker" ).datepicker();
+    });
+    </script>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            <a class="navbar-brand" href="#">Brand</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Link</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+	<div class="container">
+		<div class="jumbotron text-center">
+			<h1>Life Planner</h1>
+            <h2>Items left to do: <span class="label label-info">{{ todos.length }}</span></h2>
+        </div>
+
+        <ul class="nav nav-pills nav-justified">
+            <li class="active"><a href="#/list">List</a></li>
+            <li><a href="#/calendar">Calendar</a></li>
+        </ul><br>
+
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-2 col-xs-offset-2 control-label">Task:</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" placeholder="New things to do:" ng-model="formData.text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 col-xs-offset-2 control-label">Details:</label>
+                <div class="col-xs-6">
+                    <textarea class="form-control" rows="3" ng-model="formData.detail"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 col-xs-offset-2 control-label">Deadline:</label>
+                <div class="col-xs-3">
+                    <input type="text" id="datepicker" class="form-control" ng-model="formData.deadline">
+                </div>
+                <label class="col-xs-2 control-label">High priority?</label>
+                <div class="col-xs-1 text-right">
+                <input type="checkbox" ng-model="priority">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6 col-xs-offset-4">
+                <button type="submit" class="btn btn-primary btn-block" ng-click="createTodo()">Add</button>
+                </div>
+            </div>
+        </form>
+
+
+        <div id="todo-list" class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-xs-5">Task</th>
+                            <th class="col-xs-1">Deadline</th>
+                            <th class="col-xs-1 text-center">Priority</th>
+                            <th class="col-xs-1 text-center">Complete</th>
+                            <th class="col-xs-1 text-center">Remove</th>
+                            <th class="col-xs-1 text-center">Detail/Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="todo in todos">
+                                <td ng-class="{strike: done, background: priority}">
+                                    {{ todo.text }}
+                                </td>
+                                <td ng-class="{strike: done, background: priority}">
+                                    {{ todo.deadline }}
+                                </td>
+                                <td class="text-center" ng-class="{strike: done, background: priority}">
+                                    <label>
+                                        <input type="checkbox" ng-model="priority">
+                                    </label>
+                                </td>
+                                <td class="text-center" ng-class="{strike: done, background: priority}">
+                                    <label>
+                                        <input type="checkbox" ng-model="done">
+                                    </label>
+                                </td>
+                                <td class="text-center" ng-class="{strike: done, background: priority}">
+                                    <label>
+                                        <input type="checkbox" ng-click="deleteTodo(todo._id)">
+                                    </label>
+                                </td>
+                                <td class="text-center" ng-class="{strike: done, background: priority}">
+                                    <a href="#/details/{{todos.indexOf(todo)}}">
+                                    <label>
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </label>
+                                    </a>
+                                </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

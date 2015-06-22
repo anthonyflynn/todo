@@ -1,0 +1,49 @@
+<section class="detailsview">
+
+<script>
+$(function() {
+    $( "#datepicker" ).datepicker();
+});
+</script>
+
+<div class="container">
+	<div class="jumbotron text-center">
+        <h1>{{todos[whichItem].text}}</h1>
+	</div>
+
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-2 col-xs-offset-2 control-label">Task:</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" ng-model="formData.text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 col-xs-offset-2 control-label">Details:</label>
+                <div class="col-xs-6">
+                    <textarea class="form-control" rows="3" ng-model="formData.detail"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 col-xs-offset-2 control-label">Deadline:</label>
+                <div class="col-xs-3">
+                    <input type="text" id="datepicker" class="form-control" ng-model="formData.deadline">
+                </div>
+                <label class="col-xs-2 control-label">High priority?</label>
+                <div class="col-xs-1 text-right">
+                <input type="checkbox" ng-model="priority">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6 col-xs-offset-4">
+                <a href="/#/list">
+                <button type="submit" class="btn btn-primary btn-block" ng-click="editTodo(todos[whichItem]._id)">Update</button>
+            	</a>
+                </div>
+            </div>
+        </form>
+
+	
+</div>
+
+</section>

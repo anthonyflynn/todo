@@ -1,0 +1,30 @@
+<section class="calendar">
+
+<script>
+$(document).ready(function() {
+    $('#calendar').fullCalendar({
+    	dayClick: function() {
+        alert('a day has been clicked!');
+    }
+    })
+
+});
+</script>
+
+<div class="container">
+	<div class="jumbotron text-center">
+		<h1>Calendar View</h1>
+	</div>
+
+    <ul class="nav nav-pills nav-justified">
+        <li><a href="#/list">List</a></li>
+        <li class="active"><a href="#/calendar">Calendar</a></li>
+    </ul><br>
+
+	<div id='calendar'>
+
+	</div>
+
+</div>
+
+</section>
